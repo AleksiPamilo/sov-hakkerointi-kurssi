@@ -1,2 +1,4 @@
-theme: jekyll-theme-midnight
+theme: jekyll-theme-primer
 title: Sovellusten hakkerointi kurssi
+head_scripts:
+  - https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-dark.min.css
