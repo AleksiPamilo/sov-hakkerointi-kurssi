@@ -15,8 +15,8 @@ const isHomePage = Astro.url.pathname === "/";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     </head>
     <body class="bg-zinc-950 text-zinc-100 min-h-screen antialiased selection:bg-emerald-500 selection:text-black">
-        <div class="max-w-4xl mx-auto px-6 py-12">
-            <header class:list={["mb-10 flex justify-between items-center", !isHomePage && "pb-6 border-b border-zinc-800"]}>
+        <div class:list={["site-shell", isHomePage && "home"]}>
+            <header class:list={["mb-10 flex justify-between items-center", isHomePage && "hidden", !isHomePage && "pb-6 border-b border-zinc-800"]}>
                 {isHomePage ? null : <a href="/" class="flex items-center text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
                         <ArrowLeft class="w-4 h-4 mr-2" />
                         Takaisin etusivulle
@@ -31,3 +31,23 @@ const isHomePage = Astro.url.pathname === "/";
         </div>
     </body>
 </html>
+
+<style>
+    .site-shell {
+        width: min(92svw, 54rem);
+        min-height: 100vh;
+        min-height: 100svh;
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 3vw, 3rem);
+        padding-bottom: 3rem;
+        padding-top: clamp(2rem, 6vh, 4rem);
+    }
+
+    .site-shell.home {
+        padding-top: clamp(2rem, 10vh, 8rem);
+    }
+
+    .site-shell:not(.home) {
+        width: min(92svw, 58rem);
+    }
+</style>
