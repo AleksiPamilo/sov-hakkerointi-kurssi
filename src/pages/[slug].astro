@@ -1,0 +1,27 @@
+---
+import ReportLayout from "../layouts/ReportLayout.astro";
+
+export async function getStaticPaths() {
+    const reports = import.meta.glob("../../tehtavat/h*/README.md", { eager: true });
+
+    return Object.entries(reports).map(([path, report]: [string, any]) => {
+        const parts = path.split("/");
+        const slug = parts[parts.length - 2];
+
+        return {
+            params: { slug },
+            props: {
+                Content: report.Content,
+                frontmatter: report.frontmatter,
+                slug
+            }
+        };
+    });
+}
+
+const { Content, frontmatter, slug } = Astro.props;
+---
+
+<ReportLayout frontmatter={{ title: `${slug}: ${frontmatter.title}` }}>
+    <Content />
+</ReportLayout>

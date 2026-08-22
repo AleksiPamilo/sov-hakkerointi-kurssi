@@ -1,0 +1,35 @@
+---
+import ReportLayout from "../layouts/ReportLayout.astro";
+
+const reports = [
+	{ title: "h0", description: "C++ -ohjelman kääntäminen, binäärin perusanalyysi ja raportointi." },
+	{ title: "h1", description: "Oman opiskeluympäristön ISMS-laajuusmäärittely, verkkokartoitus ja sidosryhmäanalyysi." }
+]
+---
+
+<ReportLayout frontmatter={{ title: "Sovellusten hakkerointi ja haavoittuvuudet" }}>
+	<div class="not-prose mb-12">
+		<h1 class="text-3xl font-extrabold text-white tracking-tight sm:text-4xl mb-3">Sovellusten hakkerointi ja haavoittuvuudet</h1>
+		<p class="text-zinc-400 text-base">Kurssin viikkoharjoitukset</p>
+	</div>
+
+	<h2>Tehtäväraportit</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Tehtävä</th>
+				<th>Aihe / Kuvaus</th>
+				<th>Raportti</th>
+			</tr>
+		</thead>
+		<tbody>
+			{reports.map(report => (
+				<tr>
+					<td><strong>{report.title}</strong></td>
+					<td>{report.description}</td>
+					<td><a href={`/${report.title}`} class="text-emerald-400 hover:text-emerald-300 transition-colors">Raportti</a></td>
+				</tr>
+			))}
+		</tbody>
+	</table>
+</ReportLayout>

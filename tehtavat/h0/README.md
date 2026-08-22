@@ -1,5 +1,3 @@
-[<- Takaisin etusivulle](../README.md)
-
 # h0 Compile and Analyze
 
 **Päivämäärä:** 20.8.2026   

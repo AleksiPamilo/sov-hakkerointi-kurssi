@@ -1,5 +1,9 @@
-# Sovellusten hakkerointi ja haavoittuvuudet - Kurssiraportit
+# Sovellusten hakkerointi ja haavoittuvuudet
+
+> Raporttisivusto: [kurssi.pmlo.dev](https://kurssi.pmlo.dev)
 
 ## Tehtäväraportit
-* **[h0: Compile and Analyze](./h0/README.md)** - C++ -ohjelman kääntäminen, binäärin perusanalyysi ja raportointi
-* **[h1: Freedom of Action, Control, and Risk Mitigation](./h1/README.md)** - Oman opiskeluympäristön ISMS-laajuusmäärittely, verkkokartoitus ja sidosryhmäanalyysi
+Kaikki tehtävät löytyvät tehtavat kansiosta.
+
+* **[h0: Compile and Analyze](./tehtavat/h0/README.md)** - C++ -ohjelman kääntäminen, binäärin perusanalyysi ja raportointi
+* **[h1: Freedom of Action, Control, and Risk Mitigation](./tehtavat/h1/README.md)** - Oman opiskeluympäristön ISMS-laajuusmäärittely, verkkokartoitus ja sidosryhmäanalyysi
