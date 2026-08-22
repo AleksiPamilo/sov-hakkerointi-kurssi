@@ -1,3 +1,7 @@
+---
+title: Freedom of Action, Control, and Risk Mitigation
+---
+
 # h1 Freedom of Action, Control, and Risk Mitigation
 
 **Päivämäärä:** 22.8.2026   
