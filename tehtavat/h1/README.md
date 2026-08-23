@@ -39,7 +39,7 @@ title: Freedom of Action, Control, and Risk Mitigation
     * Oppilaitoksen Microsoft OneDrive
     * Oppilaitoksen oppimisympäristö
 * **Verkko- ja etäyhteydet:**
-    * TP-Link-reitittimen NAT ja SPI-ominaisuudet (erillisiä etäyhteyksiä, kuten VPN/SSH/RDP, ei ole käytössä).
+    * TP-Link-reitittimen NAT- ja SPI-ominaisuudet (erillisiä etäyhteyksiä, kuten VPN/SSH/RDP, ei ole käytössä).
 * **Palveluntarjoajat:**
     * Internet-palveluntarjoaja
     * GitHub
@@ -87,10 +87,10 @@ title: Freedom of Action, Control, and Risk Mitigation
 | Sidosryhmä (*Interested Party*) | Tarve tai vaatimus (*Need / Requirement*) | ISO 27001 -viite | Miten osoitetaan (*Evidence*) |
 | :--- | :--- | :--- | :--- |
 | **Oppilaitos / Kurssin opettaja** | Akateeminen rehellisyys; labraympäristöä käytetään ainoastaan kurssin ohjeistettuihin harjoituksiin, eikä sitä käytetä haitalliseen toimintaan. | **Operation (Toiminta)** | Reitittimen palomuuri- ja porttiohjausasetukset sekä ajantasaiset GitHub/LMS-palautukset. |
-| **Työnantaja** | Työlaitteen ja työtietojen suojaaminen ja erilläänpito opiskeluympäristöstä ja labrakokeiluista. | **Context & Operation (Toimintaympäristö ja toiminta)** | Laitetason eriyttäminen (erillinen työkone) ja labranympäristön ajaminen erillisessä UTM-virtuaalikoneessa. |
+| **Työnantaja** | Työlaitteen ja työtietojen suojaaminen ja erilläänpito opiskeluympäristöstä ja labrakokeiluista. | **Context & Operation (Toimintaympäristö ja toiminta)** | Laitetason eriyttäminen (erillinen työkone) ja labraympäristön ajaminen erillisessä UTM-virtuaalikoneessa. |
 | **Minä itse (Ympäristön omistaja / Ylläpitäjä)** | Kurssimateriaalien, muistiinpanojen ja labrakonfiguraatioiden säilyvyys sekä opiskelun jatkuvuus laiterikon sattuessa. | **Leadership & Operation (Johtajuus ja toiminta)** | GitHub-versionhallinnan käyttö sekä koulun OneDrive-pilvisynkronointi tärkeille dokumenteille. |
 | **Pilvipalveluntarjoajat (GitHub, Microsoft)** | Palveluehtojen noudattaminen ja käyttäjätilien suojaaminen luvattomalta pääsyltä. | **Operation (Toiminta / Pääsynhallinta)** | Monivaiheisen tunnistautumisen (MFA / Authenticator) ja vahvojen salasanojen käyttö. |
 
 ### Lähteet
-1. Kurssitehtävä: [Tero Karvinen: Application Hacking - h1 Freedom of Action, Control, and Risk. Mitigation](https://terokarvinen.com/application-hacking/#homework-tasks). Luettu: 22.8.2026
+1. Kurssitehtävä: [Tero Karvinen: Application Hacking - h1 Freedom of Action, Control, and Risk Mitigation](https://terokarvinen.com/application-hacking/#homework-tasks). Luettu: 22.8.2026
 2. Standardi: SFS-EN ISO/IEC 27001:2023: Tietoturvallisuus, kyberturvallisuus ja tietosuoja. Tietoturvallisuuden hallintajärjestelmät. Vaatimukset. Suomen Standardisoimisliitto SFS.
