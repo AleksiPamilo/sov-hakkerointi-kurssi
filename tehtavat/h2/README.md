@@ -40,7 +40,7 @@ title: Break & Unbreak
         cd challenges/010-staff-only/
         python3 staff-only.py
         ```
-    - Avasin osoitteen `http://127.0.0.1:5000` Firefox -selaimella.
+    - Avasin osoitteen [http://localhost:5000](http://localhost:5000) Firefox -selaimella.
     - Sivusto sisälsi PIN-koodi kentän. Koodi `123` palautti salasanan `Somedude`.
     - Avasin developer tools `F12` napilla, ja vaihdoin numerokentän tekstikentäksi `type="number"` -> `type="text"`, tämän jälkeen pystyin syöttämään kenttään tekstiä.
     - **Testatut syötteet:**
@@ -89,14 +89,14 @@ title: Break & Unbreak
     ./manage.py makemigrations; ./manage.py migrate
     ./manage.py runserver
     ```
-    - Avasin osoitteen `http://127.0.0.1:8000` Firefox -selaimella.
+    - Avasin osoitteen [http://localhost:8000](http://localhost:8000) Firefox -selaimella.
 - **Murtautuminen:**
     - **Piilotettujen polkujen etsiminen**: Asennettiin SecLists `sudo apt update && sudo apt install seclists -y` ja suoritettiin `ffuf`-haku:
         ```bash
-        ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://127.0.0.1:8000/FUZZ
+        ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://localhost:8000/FUZZ
         ```
     - Työkalu löysi yhden polun: `admin-console`, joka ohjasi kirjautumattoman käyttäjän kirjautumissivulle.
-    - Rekisteröin uuden tavallisen käyttäjän ja navigoin kirjautuneena suoraan osoitteeseen `http://127.0.0.1:8000/admin-console/`.
+    - Rekisteröin uuden tavallisen käyttäjän ja navigoin kirjautuneena suoraan osoitteeseen [http://localhost:8000/admin-console/](http://localhost:8000/admin-console/).
     - Pääsy salaiselle sivulle onnistui ilman ylläpito-oikeuksia. Sovellus tarkisti vain kirjautumisen, mutta ei varsinaista käyttäjäroolia.
     
     ![Admin Secret Page](image-3.png)
@@ -121,13 +121,13 @@ title: Break & Unbreak
             return self.request.user.is_staff
     ```
     - **Korjauksen verifiointi ja testaus:**
-        - **Testi 1:** Yritettiin avata osoite [http://127.0.0.1:8000/admin-console/](http://127.0.0.1:8000/admin-console/) tavallisena rekisteröityneenä käyttäjänä. Sovellus palautti virheilmoituksen `403 Forbidden`, joten luvaton pääsy on estetty.
+        - **Testi 1:** Yritettiin avata osoite [http://localhost:8000/admin-console/](http://localhost:8000/admin-console/) tavallisena rekisteröityneenä käyttäjänä. Sovellus palautti virheilmoituksen `403 Forbidden`, joten luvaton pääsy on estetty.
         ![Admin Secret Page Regular User](image-4.png)
         - **Testi 2:** Luotiin ylläpitokäyttäjä:
             ```bash
             ./manage.py createsuperuser
             ```
-            Kirjauduttiin sisään luodulla käyttäjällä ja navigoitiin osoitteeseen [http://127.0.0.1:8000/admin-console/](http://127.0.0.1:8000/admin-console/) Sivu aukesi normaalisti, mikä vahvistaa, että sivun toiminnallisuus säilyi oikeutetuille käyttäjille.
+            Kirjauduttiin sisään luodulla käyttäjällä ja navigoitiin osoitteeseen [http://localhost:8000/admin-console/](http://localhost:8000/admin-console/) Sivu aukesi normaalisti, mikä vahvistaa, että sivun toiminnallisuus säilyi oikeutetuille käyttäjille.
             ![Admin Secret Page Staff User](image-5.png)
 - **Pohdinta:**
     - **Yleisyys ja riskit:** Erittäin yleinen virhe web-sovelluksissa, joissa hallintapainikkeet vain piilotetaan käyttöliittymästä, mutta itse API- ja URL-reittejä ei suojata palvelinpuolella roolikohtaisesti.
