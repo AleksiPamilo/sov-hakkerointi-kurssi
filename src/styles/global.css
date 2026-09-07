@@ -44,3 +44,8 @@ summary {
 .prose :not(pre) > code::after {
   content: "" !important;
 }
+
+blockquote p::before,
+blockquote p::after {
+    content: none !important;
+}
