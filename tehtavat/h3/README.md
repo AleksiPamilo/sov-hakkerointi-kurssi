@@ -8,6 +8,7 @@ title: No Strings Attached
 **Tekijä:** Aleksi Pamilo   
 **Ympäristö:** Kali Linux 2026.2 (x86_64, UTM/QEMU macOS)
 
+> **Päivitys 7.9.2026:** Raporttia on täydennetty vertaisarvioinnista saadun palautteen perusteella. Avasin b-kohdassa tarkemmin ratkaisun syntyprosessia, tekoälyn hyödyntämistä sekä XOR-salauksen toimintalogiikkaa.
 ---
 
 ### a) Strings
@@ -143,7 +144,8 @@ title: No Strings Attached
     }
     ```
 - Korjataan tiedosto obfuskoimalla sekä salasana että flag:
-    - Pythonin avulla voimme helposti obfuskoida salasanan sekä flagin:
+    - **Ajatusprosessi ja tiedonhaku:** Koska C-kieli on minulle uutta, hain ratkaisua googlettamalla (Tutorialspoint, GeeksForGeeks). Opin XOR-salauksen olevan symmetrinen: sama toimitus (`arvo ^ avain`) sekä salaa että purkaa tiedon. Kuten GeeksForGeeks-lähteen `encryptDecrypt`-esimerkki osoittaa, täsmälleen samaa koodilogiikkaa käytetään molempiin suuntiin. Päädyin obfuskoimaan myös flagin, koska muuten sen olisi voinut edelleen lukea suoraan `strings`-komennolla, jolloin salasanan piilottamisesta ei olisi hyötyä.
+    - **Toteutus:** Ymmärrän, että voisin tehdä obfuskoinnin C-koodissa manuaalisesti asettamalla jokaisen merkin erikseen (esim `char[] secret = { 's'^0x2A, 'a'^0x2A,...};`). Automatisoidakseni ja nopeuttaakseni tätä rutiinivaihetta, pyysin Gemini-tekoälyä luomaan Python-skriptit, jotka tekevät muunnokset valitsemallani avaimella (`0x2A`) valmiiksi heksataulukoiksi:
         ```bash
         python3 -c 'key=0x2A; text="sala-hakkeri-321"; print("char secret[] = {" + ", ".join(f"0x{ord(c)^key:02x}" for c in text) + ", 0x00};")'
         python3 -c 'key=0x2A; text="Yes! That'\''s the password. FLAG{Tero-d75ee66af0a68663f15539ec0f46e3b1}"; print("char flag_secret[] = {" + ", ".join(f"0x{ord(c)^key:02x}" for c in text) + ", 0x00};")'
@@ -524,6 +526,6 @@ title: No Strings Attached
 
 ### Lähteet
 1. Kurssitehtävä: [Tero Karvinen: Application Hacking - h3 No Strings Attached](https://terokarvinen.com/application-hacking/#homework-tasks). Luettu: 6.9.2026.
-2. tutorialspoint: Bitwise operators in C. URL:https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm Luettu: 6.9.2026
+2. tutorialspoint: Bitwise operators in C. URL: https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm Luettu: 6.9.2026
 3. GeeksForGeeks: XOR Cipher. URL: https://www.geeksforgeeks.org/dsa/xor-cipher/ Luettu: 6.9.2026
 4. Google Gemini -kielimallia käytettiin apuna salauslogiikan ymmärtämisessä, C-koodin syntaksin hiomisessa (esim. `sizeof`-operaattorin käyttö) sekä salattujen merkkitaulukoiden generoimiseen tarvittavien Python-komentojen luomisessa.
