@@ -72,7 +72,7 @@ title: Some Disassembly Required
 ![crackme01 ghidra](image-7.png)
 - Tämä tehtävä oli todella helppo, ja se vastaus löytyy suoraan riviltä 11: `password1`.
 ![oikea salasana](image-8.png)
-- Kun ajan ohjelman, ja syötän tämän `password1` parametriksi, saan vastauksen:
+- Kun ajan ohjelman, ja syötän tämän `password1` argumentiksi, saan vastauksen:
 ![oikea vastaus](image-9.png)
 
 ---
