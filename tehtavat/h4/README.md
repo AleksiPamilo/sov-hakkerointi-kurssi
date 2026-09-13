@@ -146,4 +146,4 @@ title: Some Disassembly Required
 4. Stack Overflow. JNZ & CMP Assembly Instructions. URL: https://stackoverflow.com/questions/14841169/jnz-cmp-assembly-instructions Luettu: 12.9.2026
 5. NoraCodes. An Intro to x86_64 Reverse Engineering. URL: https://nora.codes/tutorial/an-intro-to-x86_64-reverse-engineering/ Luettu: 12.9.2026
 6. ASCII-code.com. ASCII printable characters URL: https://www.ascii-code.com/ Luettu: 12.9.2026
-7. 
+7. Google Gemini -kielimallia käytettiin apuna kääntäjän linkitysvirheen (`cannot find -lcrypt`) ratkaisemisessa ja tarvittavan kirjaston (`libcrypt-dev`) paikantamisessa. URL: https://gemini.google.com Käytetty: 12.9.2026
