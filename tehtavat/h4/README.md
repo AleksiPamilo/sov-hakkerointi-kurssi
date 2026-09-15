@@ -65,7 +65,7 @@ title: Some Disassembly Required
 ### Nora crackme01
 - Aloitin asentamalla riippuvuudet: `sudo apt install build-essential gcc xxd binutils`.
 - Kloonasin GitHub repositorion joka sisältää kaikki crackme -tehtävät. `git clone https://github.com/NoraCodes/crackmes.git`
-- Ajoin komennon `make crackme01`, ja sain virheen `cannot find -lcrypt` -virheen.
+- Ajoin komennon `make crackme01`, ja sain `cannot find -lcrypt` -virheen.
 - Googlettamalla `/usr/bin/x86_64-linux-gnu-ld.bfd: cannot find -lcrypt` ei löytynyt nopeasti mitään, joten turvauduin Google Gemini puoleen, ja sain vastauksen: `sudo apt install libcrypt-dev`.
 - Nyt sain ajettua komennon `make crackme01`.
 - Importoin kyseisen tiedoston Ghidraan.
@@ -92,7 +92,7 @@ title: Some Disassembly Required
 ### Nora crackme02
 - Aloitin ajamalla komennon `make crackme02`.
 - Importoin `crackme02.64` Ghidraan.
-- Muuttujien uudelleennimeäminen: (klikkaa avataksesi)
+- Muuttujien uudelleennimeäminen:
     - `param_1` -> `argc`
     - `param_2` -> `argv`
     - `pcVar1` -> `userInput`
