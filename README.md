@@ -10,3 +10,4 @@ Kaikki tehtävät löytyvät tehtavat kansiosta.
 * **[h2: Break & Unbreak](./tehtavat/h2/README.md)** - OWASP Broken Access Control, ffuf sekä SQL-injektioiden hyödyntäminen ja korjaaminen.
 * **[h3: No Strings Attached](./tehtavat/h3/README.md)** - Binäärien staattinen analyysi, C-koodin XOR-obfuskointi ja UPX-pakattujen ohjelmien purkaminen.
 * **[h4: Some Disassembly Required](./tehtavat/h4/README.md)** - Ghidran käyttö, binäärien dekompilointi C-kielelle ja crackme-haasteiden ratkaiseminen.
+* **[h5: Binääri tässä, missä koodit?](./tehtavat/h5/README.md)** - GDB (wip)
