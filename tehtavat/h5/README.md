@@ -11,7 +11,7 @@ title: Binääri tässä, missä koodit?
 ---
 
 ### lab0
-- Aloitin asentamalla tiedostot ja purkamalla ne `unzip '*.zip'` -komennolla.
+- Aloitin asentamalla tiedostot hakemistoon `~/Desktop/challenges` ja purkamalla ne `unzip '*.zip'` -komennolla.
 - Siirryin lab0 kansioon `cd lab0` ja avasin gdb näkymän `gdb ./buggy_program`.
 - Komennolla `list` nähdään koodi.  
     ![koodi](image.png)
@@ -48,7 +48,7 @@ title: Binääri tässä, missä koodit?
 ---
 
 ### lab1
-- Siirrytään edellisestä tehtävästä lab1 tehtävään komennolla `cd ../lab1`.
+- Siirryin edellisestä tehtävästä lab1 tehtävään komennolla `cd ../lab1`.
 - Avaan gdb näkymän komennolla `gdb ./gdb_example1`.
 - Ajan ohjelman komennolla `r`. Gdb kertoo suoraan, että ohjelma kaatuu `Segmentation fault` virheeseen, ja että tämä tapahtuu rivillä 7.  
     ![segmentaatio virhe](image-5.png)
@@ -81,6 +81,20 @@ title: Binääri tässä, missä koodit?
     ```
 - Nyt ohjelma voidaan suorittaa onnistuneesti.  
 ![korjaus](image-6.png)
+
+---
+
+### lab2
+- Siirryn tehtäväkansioon komennolla `cd Desktop/challenges/Dynaaminen\ analyysi/lab2/passtr`.
+- `info functions` komennolla löytyy kaikki ohjelman funktiot ja symbolit.
+- `disas main` -komennolla saan purettua main funktion.
+- Tämä ei vielä kerro hirveästi, kokeillaan purkaa funktio `mAsdf3a`, ja asetetaan breakpoint funktion alkuun `b *mAsdf3a`.
+- Tästä näkyy `mov %rdi,%rbp` ja `mov %rsi,%rbx`. KäKäynnistän ohjelman `r`, ja syötän salasanaksi `testi`.
+- Ohjelma pysähtyy breakpointtiin, printataan `rsi` ja `rdi` muuntamalla ne ensin char muotoon `print (char*) $rsi`, `print (char*) $rdi`.
+- Tämä paljastaa, että `$rsi` on käyttäjän syöte, ja `$rdi` on oletettavasti salasana.  
+    ![print](image-7.png)
+- `anLTj4u8` ei kuitenkaan ole ohjelman hyväksymä salasana, joten sille todennäköisesti tehdään jotain, tai se ei ole etsimämme salasana.
+
 ---
 
 ### Lähteet
