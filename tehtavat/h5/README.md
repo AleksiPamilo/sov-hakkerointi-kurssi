@@ -7,13 +7,17 @@ title: Binääri tässä, missä koodit?
 **Päivämäärä:** 18.9.2026  
 **Tekijä:** Aleksi Pamilo   
 **Ympäristöt:**
-- Kali Linux 2026.2 (x86_64, UTM/QEMU macOS)
-- Kali Linux 2026.2 (x86_64, VirtualBox), Ryzen 7 9800x3d, Nvidia RTX 5070 TI
-- Kali Linux 2026.2 (x86_64), Intel i3-1115G4
+1. Kali Linux 2026.2 (x86_64, UTM/QEMU macOS)
+2. Kali Linux 2026.2 (x86_64, VirtualBox), Ryzen 7 9800x3d, Nvidia RTX 5070 TI
+3. Kali Linux 2026.2 (x86_64), Intel i3-1115G4
+
+Kokeilin tehtäviä useammalla koneella. Aloitin lab0:n tunnilla macOS:llä, mutta emuloitu amd64-Kali ei jaksanut pyörittää GDB:tä, vaan jäätyi `continue`-komennon jälkeen. Tehokkaimmista koneista huolimatta natiivisti asennettu Kali i3-kannettavalla toimi parhaiten, joten tein loput tehtävät sillä. Jokaisen tehtävän alussa on merkitty ympäristö, jossa raportin kuvakaappaukset ja tulokset on tehty.
 
 ---
 
 ### lab0
+**Ympäristö:** 2 (aloitettu ympäristössä 1)
+
 - Aloitin asentamalla tiedostot hakemistoon `~/Desktop/challenges/Dynaaminen analyysi` ja purkamalla ne `unzip '*.zip'` -komennolla.
 - Siirryin lab0 kansioon `cd lab0` ja avasin gdb näkymän `gdb ./buggy_program`.
 - Komennolla `list` nähdään koodi.  
@@ -51,6 +55,8 @@ title: Binääri tässä, missä koodit?
 ---
 
 ### lab1
+**Ympäristö:** 3
+
 - Siirryin edellisestä tehtävästä lab1 tehtävään komennolla `cd ../lab1`.
 - Avaan gdb näkymän komennolla `gdb ./gdb_example1`.
 - Ajan ohjelman komennolla `r`. Gdb kertoo suoraan, että ohjelma kaatuu `Segmentation fault` virheeseen, ja että tämä tapahtuu rivillä 7.  
@@ -88,6 +94,8 @@ title: Binääri tässä, missä koodit?
 ---
 
 ### lab2
+**Ympäristö:** 3
+
 - Siirryn tehtäväkansioon komennolla `cd ~/Desktop/challenges/Dynaaminen\ analyysi/lab2/passtr`.
 - Kansiossa on kaksi binääriä, `passtr` ja `passtr2o`. Tehtävänä on murtaa `passtr2o`, jonka lähdekoodia ei ole, joten avaan sen GDB:hen komennolla `gdb ./passtr2o`.
 - `info functions` komennolla löytyy kaikki ohjelman funktiot ja symbolit.
@@ -101,7 +109,7 @@ title: Binääri tässä, missä koodit?
 
 > **Tekoälyn käyttö:** Jäin jumiin funktion `mAsdf3a` assemblyn tulkinnassa ja käytin tästä eteenpäin apuna tekoälyä (Claude). Tekoäly selitti käskyjen merkityksen (silmukka, parillisuustarkistus `test $0x1,%al` sekä `add $0x3` / `sub $0x7` -muunnokset) ja ehdotti GDB:n `commands`-ominaisuutta odotettujen merkkien tulostamiseen. Ajoin komennot, otin kuvakaappaukset ja varmistin salasanan ja lipun itse.
 
-- Puretaan funktio `disas mAsdf3a`.
+- Puretaan funktio `disas mAsdf3a`.  
     ![mAsdf3a](image-8.png)
 - Funktio toimii näin:
     - `call strlen` kahdesti ja `cmp %r12d,%edx`: salasanan ja tallennetun merkkijonon pituuden pitää olla sama, eli 8 merkkiä.
@@ -120,7 +128,7 @@ title: Binääri tässä, missä koodit?
     end
     ```
 - Käynnistän ohjelman `r` ja syötän minkä tahansa 8-merkkisen salasanan, esim. `aaaaaaaa`.
-- GDB tulostaa jokaisella kierroksella odotetun merkin:
+- GDB tulostaa jokaisella kierroksella odotetun merkin:  
     ![odotetut merkit](image-9.png)
 - Merkit yhdistämällä salasanaksi saadaan `dgOMm-x1`.
 - Ajetaan ohjelma ilman debuggeria `./passtr2o` ja syötetään salasana. Ohjelma tulostaa lipun `FLAG{Lari-rsvRDx04WMBZpuwg4qfYwzdcvVa0oym}`.
@@ -138,6 +146,8 @@ title: Binääri tässä, missä koodit?
 ---
 
 ### lab3
+**Ympäristö:** 3
+
 - Valitsin tehtäväksi `crackme01.64`. Kansion `lab3/crackmes` README:n mukaan tavoitteena on saada ohjelma päättymään paluuarvoon 0. Lähdekoodia (`crackme01.c`) en lukenut.
 - Siirryn kansioon komennolla `cd ~/Desktop/challenges/Dynaaminen\ analyysi/lab3/crackmes`.
 - `strings` ei ollut asennettuna. Se kuuluu `binutils`-pakettiin, joten asensin sen komennolla `sudo apt install binutils`.
@@ -145,7 +155,7 @@ title: Binääri tässä, missä koodit?
 - Varmistan GDB:llä, että ohjelma todella vertaa syötettä tähän merkkijonoon. Avaan ohjelman komennolla `gdb ./crackme01.64`.
 - `disas main` -komennolla näen, että ohjelma kutsuu `strncmp`-funktiota kohdassa `main+30`.
 - Asetan breakpointin kutsuun `b *main+30` ja käynnistän ohjelman argumentilla `a` komennolla `r a`.
-- Ohjelman pysähdyttyä tulostan `strncmp`:n kaksi ensimmäistä argumenttia komennoilla `print (char*) $rdi` ja `print (char*) $rsi`. `$rdi` sisältää syötteeni `a` ja `$rsi` merkkijonon `password1`, joten ohjelma vertaa syötettä juuri siihen.
+- Ohjelman pysähdyttyä tulostan `strncmp`:n kaksi ensimmäistä argumenttia komennoilla `print (char*) $rdi` ja `print (char*) $rsi`. `$rdi` sisältää syötteeni `a` ja `$rsi` merkkijonon `password1`, joten ohjelma vertaa syötettä juuri siihen.  
     ![strncmp argumentit](image-11.png)
 - Ajan ohjelman ilman debuggeria oikealla salasanalla ja tulostan paluuarvon: `./crackme01.64 password1; echo $?`.
 - Ohjelma tulostaa `Yes, password1 is correct!` ja paluuarvo on `0`, joten salasana on `password1`.
