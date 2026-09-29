@@ -11,3 +11,4 @@ Kaikki tehtävät löytyvät tehtavat kansiosta.
 * **[h3: No Strings Attached](./tehtavat/h3/README.md)** - Binäärien staattinen analyysi, C-koodin XOR-obfuskointi ja UPX-pakattujen ohjelmien purkaminen.
 * **[h4: Some Disassembly Required](./tehtavat/h4/README.md)** - Ghidran käyttö, binäärien dekompilointi C-kielelle ja crackme-haasteiden ratkaiseminen.
 * **[h5: Binääri tässä, missä koodit?](./tehtavat/h5/README.md)** - GNU Debuggerin (GDB) käyttö, ohjelmavirheiden korjaaminen sekä salasanojen ja lipun selvittäminen binääreistä ilman lähdekoodia.
+* **[h6: Onkohan tämä turvallinen käyttää?](./tehtavat/h6/README.md)** - Tapo C200 kameran ohjelmiston tutkiminen aiempia taitoja hyödyntäen.
